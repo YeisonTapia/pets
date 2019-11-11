@@ -1,32 +1,30 @@
 import React from 'react'
+import useGetPets from '../hooks/index'
+import PetItem from '../components/PetItem'
+import { Link } from 'react-router-dom'
 
-const Home = () => (
-  <div className="Home">
-    <div className="Home-container">
-      <div className="Home-items">
-        
-        <div className="Pets">
-          <div className="Pets-cover">
-            <span>icon</span>
-            <div className="Pets-type">
-              Adopción
-            </div>
-          </div>
-          <div className="Pets-content">
-            <div className="Pets-head">
-              <h2>Nombre de mi mascota</h2>
-              <i>icon</i>
-            </div>
-            <div className="Pets-date">
-              <i>icon</i>
-              <span>Fecha</span>
-            </div>
-          </div>
+const API =  'https://us-central1-patitas-7c805.cloudfunctions.net/api'
+
+const Home = () => {
+  
+  const pets = useGetPets(API)
+
+  return (
+    <div className="Home">
+      <div className="Home-container">
+        <div className="Home-items">
+          {pets.map( ( pet, index )  => 
+            <Link to={{
+              pathname:`mascotas/${index}-${pet.name}`,
+              state: { ...pet }
+            }}>
+              <PetItem pet={pet} key={`pet-${index}`}/>
+            </Link>
+          )}
         </div>
-
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default Home
