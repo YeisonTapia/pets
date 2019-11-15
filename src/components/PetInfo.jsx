@@ -44,4 +44,3 @@ const PetInfo = props => {
 }
 
 export default PetInfo
-

@@ -1,20 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { auth, provider } from '../utils/firebase'
+import { setUser, setLogin } from '../actions/'
 
 const Login = (props) => {
 
   const loginFacebook = () => {
     auth().signInWithPopup(provider).then(({user}) => {
+      props.setUser(user)
+      props.setLogin(true)
       props.history.push('/panel')
     })
   }
 
-  const logoutFacebook = () => {
-    auth().signOut().then(() => {
-      props.history.push('/')
-    })
-  }
-  
   return (
   <div className="Login">
     <div className="Login-container">
@@ -24,12 +22,14 @@ const Login = (props) => {
           <i className="fab fa-facebook-square"/>
           <span> Iniciar sesión con Facebook</span>
         </button>
-        <button onClick={logoutFacebook}>
-          Cerrar Sesión
-        </button>
       </div>
     </div>
   </div>
 )}
 
-export default Login
+const mapDispatchToProps = {
+  setUser,
+  setLogin
+}
+
+export default connect(null, mapDispatchToProps)(Login)
