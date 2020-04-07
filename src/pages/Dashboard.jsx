@@ -23,7 +23,7 @@ const Dashboard = props => {
           </div>
           <div className="Dashboard-profile">
             <div>
-              <h2>Perfil</h2>
+              <h2>Perfil del usuario</h2>
               <div className="Dashboard-profile-info">
                 <img src={props.user.photoURL} alt={props.user.displayName}/>
                 <span>Nombre: </span>
