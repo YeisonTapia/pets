@@ -14,6 +14,7 @@ const config = {
   measurementId: process.env.MEASUREMENT_ID,
 };
 
+// test for github
 firebase.initializeApp(config)
 export const { auth }  = firebase
 export const storage = firebase.storage()
