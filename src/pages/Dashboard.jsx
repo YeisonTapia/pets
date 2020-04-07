@@ -26,9 +26,9 @@ const Dashboard = props => {
               <h2>Perfil del usuario</h2>
               <div className="Dashboard-profile-info">
                 <img src={props.user.photoURL} alt={props.user.displayName}/>
-                <span>Nombre: </span>
+                <span>Nombres: </span>
                 <h4>{props.user.displayName}</h4>
-                <span>Correo: </span>
+                <span>Correo Electrónico: </span>
                 <h4>{props.user.email}</h4>
                 <button onClick={logoutFacebook}>
                   Cerrar Sesión
